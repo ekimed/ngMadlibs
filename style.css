@@ -15,17 +15,21 @@ h1 {
 }
 
 h2 {
-	margin-top: 0;
+	margin: 0;
 }
 
 input {
-	margin: 5px 0;
+	margin: 5px;
 }
 
 [class*='col-'] {
 	float: left;
 	height: 200px;
 /*	border: 1px solid black;*/
+}
+
+.inner2 {
+	margin-bottom: 20px;
 }
 
 .col-1 {

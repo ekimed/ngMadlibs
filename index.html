@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html ng-app="">
+<html ng-app="myApp">
 <head>
 	<title>ngMadLibs</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script data-require="angular.js@1.3.10" data-semver="1.3.10" src="https://code.angularjs.org/1.3.10/angular.js"></script>
+	<script type="text/javascript" src="script.js"></script>
 </head>
-<body>
+<body ng-controller="ctrl">
 		<header>
 			<div class="col-1">
 				<img src="mad-lib-happy-face.png" id="smiley-face">
@@ -18,34 +19,42 @@
 		</header>
 		<section class="word-bank-container">
 			<div class="inner">
-				<h2>Provide the following words:</h2>
-				<div>
-					<input type="text" ng-model="name"/ ng-init="name='male name'">
-					<input type="text" ng-model="job_title"/ ng-init="job_title='job title'">
-					<input type="text" ng-model="tedious_task" ng-init="tedious_task='tedious task'"/>
+				<div class="inner2">
+					<h2>Select a gender:</h2>
+					<input type="radio" name="gender" value="male" ng-model="gender" ng-change="newVal()"/>Male
+					<input type="radio" name="gender" value="female" ng-model="gender" ng-change="newVal()"/>Female
 				</div>
-				<div>
-					<input type="text" ng-model="dirty_task" ng-init="dirty_task='dirty task'"/>
-					<input type="text" ng-model="celebrity" ng-init="celebrity='celebrity'"/>
-					<input type="text" ng-model="useless_skill" ng-init="useless_skill='useless skill'"/>
+				<div class="inner2">
+					<h2>Provide the following words:</h2>
+					<div>
+						<input type="text" ng-model="wordBank.name" placeholder="name"/>
+						<input type="text" ng-model="wordBank.jobTitle" placeholder="job title"/>
+						<input type="text" ng-model="wordBank.tediousTask" placeholder="tedious task"/>
+					</div>
+					<div>
+						<input type="text" ng-model="wordBank.dirtyTask" placeholder="dirty task"/>
+						<input type="text" ng-model="wordBank.celebrity" placeholder="celebrity"/>
+						<input type="text" ng-model="wordBank.uselessSkill" placeholder="useless skill"/>
+					</div>
+					<div>
+						<input type="text" ng-model="wordBank.obnoxiousCeleb" placeholder="obnoxious celebrity"/>
+						<input type="text" ng-model="wordBank.hugeNum"placeholder="huge number"/>
+						<input type="text" ng-model="wordBank.adjective" placeholder="adjective"/>
+					</div>
 				</div>
-				<div>
-					<input type="text" ng-model="obnoxious_celeb" ng-init="obnoxious_celeb='obnoxious celebrity'"/>
-					<input type="text" ng-model="huge_num" ng-init="huge_num='huge number'"/>
-					<input type="text" ng-model="adjective" ng-init="adjective='adjective'"/>
-				</div>
+				
 			</div>
 			
 		</section>
 		<section class="story-container">
 			<div class="inner">
-				<span class="word">{{name}}</span> was a <span class="word">{{job_title}}</span> who loved technology. Although he loved parts of his job, he absolutely hated <span class="word">{{tedious_task}}</span> and <span class="word">{{dirty_task}}</span>. So, <span class="word">{{name}}</span> met with his life mentor <span class="word">{{celebrity}}</span> who told him to learn how to <span class="word">{{useless_skill}}</span> with Thinkful. Thinkful didn't offer a course on {{useless_skill}} so he studied programming instead.
+				<span class="word">{{wordBank.name}}</span> was a <span class="word">{{wordBank.jobTitle}}</span> who loved technology. Although {{pronouns.p1}} loved parts of {{pronoun3}} job, {{pronouns.p1}} absolutely hated <span class="word">{{wordBank.tediousTask}}</span> and <span class="word">{{wordBank.dirtyTask}}</span>. So, <span class="word">{{wordBank.name}}</span> met with {{pronouns.p2}} life mentor <span class="word">{{wordBank.celebrity}}</span> who told {{pronouns.p3}} to learn how to <span class="word">{{wordBank.uselessSkill}}</span> with Thinkful. Thinkful didn't offer a course on <span class="word">{{wordBank.uselessSkill}}</span> so {{pronouns.p1}} studied programming instead.
 				</br>
 				</br>
-				What a great decision! With his new skills, <span class="word">{{name}}</span> built a(n) <span class="word">{{adjective}}</span> robot named <span class="word">{{obnoxious_celeb}}</span> that not only loved <span class="word">{{dirty_task}}</span> but did it <span class="word">{{huge_num}}</span> faster.
+				What a great decision! With {{pronouns.p2}} new skills, <span class="word">{{wordBank.name}}</span> built a(n) <span class="word">{{wordBank.adjective}}</span> robot named <span class="word">{{wordBank.obnoxiousCeleb}}</span> that not only loved <span class="word">{{wordBank.dirtyTask}}</span> but did it <span class="word">{{wordBank.hugeNum}}</span> times faster.
 			</div>
 		</section>
-	
+		
 	
 </body>
 </html>
