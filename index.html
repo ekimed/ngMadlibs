@@ -3,7 +3,10 @@
 <head>
 	<title>ngMadLibs</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
 	<script data-require="angular.js@1.3.10" data-semver="1.3.10" src="https://code.angularjs.org/1.3.10/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 </head>
 <body ng-controller="ctrl">
@@ -17,8 +20,18 @@
 			</div>
 			<div style="clear:both"></div>
 		</header>
-		<section class="word-bank-container">
-			<div class="inner">
+		<div class="error-msgs" ng-if="wordForm.$submitted && wordForm.$invalid" ng-messages="wordForm.$error">
+				<div ng-if="wordForm.$error.required" ng-repeat="err in wordForm.$error.required">
+					<div>
+						Please fill out the {{err.$name}} field.
+					</div>
+				</div>
+				<div ng-message="min">
+					Please enter a number greater than 100.
+				</div>
+		</div>
+		<section class="word-bank-container" ng-hide="submitted">
+			<form name="wordForm" class="inner" ng-submit="submit(wordForm)" novalidate>
 				<div class="inner2">
 					<h2>Select a gender:</h2>
 					<input type="radio" name="gender" value="male" ng-model="gender" ng-change="newVal()"/>Male
@@ -27,26 +40,26 @@
 				<div class="inner2">
 					<h2>Provide the following words:</h2>
 					<div>
-						<input type="text" ng-model="wordBank.name" placeholder="name"/>
-						<input type="text" ng-model="wordBank.jobTitle" placeholder="job title"/>
-						<input type="text" ng-model="wordBank.tediousTask" placeholder="tedious task"/>
+						<input type="text" ng-model="wordBank.name" name="name" placeholder="Name" required/>
+						<input type="text" ng-model="wordBank.jobTitle" name="job title" placeholder="job title" required/>
+						<input type="text" ng-model="wordBank.tediousTask" name="tedious task" placeholder="tedious task" required/>
 					</div>
 					<div>
-						<input type="text" ng-model="wordBank.dirtyTask" placeholder="dirty task"/>
-						<input type="text" ng-model="wordBank.celebrity" placeholder="celebrity"/>
-						<input type="text" ng-model="wordBank.uselessSkill" placeholder="useless skill"/>
+						<input type="text" ng-model="wordBank.dirtyTask" name="dirty task" placeholder="dirty task" required/>
+						<input type="text" ng-model="wordBank.celebrity" name="celebrity" placeholder="celebrity" required/>
+						<input type="text" ng-model="wordBank.uselessSkill" name="useless skill" placeholder="useless skill" required/>
 					</div>
 					<div>
-						<input type="text" ng-model="wordBank.obnoxiousCeleb" placeholder="obnoxious celebrity"/>
-						<input type="text" ng-model="wordBank.hugeNum"placeholder="huge number"/>
-						<input type="text" ng-model="wordBank.adjective" placeholder="adjective"/>
+						<input type="text" ng-model="wordBank.obnoxiousCeleb" name="obnoxious celebrity" placeholder="obnoxious celebrity" required/>
+						<input type="number" ng-model="wordBank.hugeNum" name="huge number" placeholder="huge number" min="100" required/>
+						<input type="text" ng-model="wordBank.adjective" name="adjective" placeholder="adjective" required/>
 					</div>
-				</div>
+					<button>Generate My Mad Lib</button>
+				</form>
 				
 			</div>
-			
 		</section>
-		<section class="story-container">
+		<section class="story-container" ng-hide="hide">
 			<div class="inner">
 				<span class="word">{{wordBank.name}}</span> was a <span class="word">{{wordBank.jobTitle}}</span> who loved technology. Although {{pronouns.p1}} loved parts of {{pronoun3}} job, {{pronouns.p1}} absolutely hated <span class="word">{{wordBank.tediousTask}}</span> and <span class="word">{{wordBank.dirtyTask}}</span>. So, <span class="word">{{wordBank.name}}</span> met with {{pronouns.p2}} life mentor <span class="word">{{wordBank.celebrity}}</span> who told {{pronouns.p3}} to learn how to <span class="word">{{wordBank.uselessSkill}}</span> with Thinkful. Thinkful didn't offer a course on <span class="word">{{wordBank.uselessSkill}}</span> so {{pronouns.p1}} studied programming instead.
 				</br>

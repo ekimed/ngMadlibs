@@ -1,5 +1,5 @@
 body {
-	font-family: 'Courier New', 'Cal­isto MT', sans-serif;,'Garamond';
+	font-family: 'Neuton','Courier New', 'Cal­isto MT', sans-serif;,'Garamond';
 }
 
 header {
@@ -7,10 +7,11 @@ header {
 	width: 90%;
 	margin: 0 auto;
 	overflow: hidden;
-	border: 1px solid black;
+	border: 1px solid #bdc3c7;
 }
 
 h1 {
+	font-family: 'Arvo', sans-serif;
 	font-size: 60px;
 }
 
@@ -20,6 +21,11 @@ h2 {
 
 input {
 	margin: 5px;
+}
+
+button {
+	margin: 20px 0;
+	padding: 15px;
 }
 
 [class*='col-'] {
@@ -34,7 +40,7 @@ input {
 
 .col-1 {
 	width: 32.33%;
-	border-right: 1px solid black;
+	border-right: 1px solid #bdc3c7;
 }
 
 .col-2 {
@@ -46,7 +52,7 @@ input {
 }
 
 .story-container, .word-bank-container {
-	border: 1px solid black;
+	border: 1px solid #bdc3c7;
 	border-top: none;
 }
 
@@ -68,4 +74,17 @@ input {
 
 .word {
 	border-bottom: 1px solid black;
+}
+
+.error-msgs {
+	position: absolute;
+	background-color: #ffecec;
+	border-radius: 8px;
+	padding: 10px 10px 10px 36px;
+	border: 1px solid #e74c3c;
+	margin: 0 auto;
+	top: 25%;
+	left: 0;
+	right: 0;
+	width: 250px;
 }
