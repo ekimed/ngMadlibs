@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngMessages'])
+angular.module('myApp', ['ngMessages', 'ngAnimate'])
 	.controller('ctrl', function ($scope) {
 		var femalePronouns = {
 			"p1": "she",
