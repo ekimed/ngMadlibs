@@ -89,9 +89,7 @@ button {
 	width: 250px;
 }
 
-.ng-hide-add, .ng-hide-remove {
-	display: block !important;
-}
+
 .story-container {
 	-webkit-transition: 1s linear all;
 	transition: 1s linear all;
